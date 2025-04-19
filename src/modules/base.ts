@@ -8,10 +8,15 @@ export interface BaseConfig {
   region: "NA" | "EU" | "FE";
   sandbox?: boolean;
 }
+interface TokenInfo {
+  accessToken: string;
+  expiresAt: number;
+}
 
 export abstract class BaseApi {
   protected axiosInstance: AxiosInstance;
   protected configuration: Configuration;
+  private tokenInfo: TokenInfo | null = null;
 
   constructor(protected config: BaseConfig) {
     this.axiosInstance = axios.create({
@@ -25,6 +30,12 @@ export abstract class BaseApi {
     this.configuration = new Configuration({
       basePath: this.getBaseUrl(),
       accessToken: this.getAccessToken.bind(this),
+    });
+
+    this.axiosInstance.interceptors.request.use(async (config) => {
+      const token = await this.getValidAccessToken();
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
     });
   }
 
@@ -53,7 +64,7 @@ export abstract class BaseApi {
     return endpoints[this.config.region];
   }
 
-  protected async getAccessToken(): Promise<string> {
+  protected async getAccessToken() {
     try {
       const tokenEndpoint = this.getTokenEndpoint();
 
@@ -72,7 +83,7 @@ export abstract class BaseApi {
         }
       );
 
-      return response.data.access_token;
+      return response.data;
     } catch (error) {
       console.error("Access token alınırken hata oluştu:", error);
       throw new Error("Access token alınamadı");
@@ -82,5 +93,22 @@ export abstract class BaseApi {
   protected get clientId(): string {
     return this.config.clientId;
   }
-}
 
+  protected async getValidAccessToken(): Promise<string> {
+    if (!this.tokenInfo || Date.now() >= this.tokenInfo.expiresAt) {
+      return this.refreshAccessToken();
+    }
+    return this.tokenInfo.accessToken;
+  }
+
+  private async refreshAccessToken(): Promise<string> {
+    const response = await this.getAccessToken();
+
+    this.tokenInfo = {
+      accessToken: response.access_token,
+      expiresAt: Date.now() + (response.expires_in || 3600) * 1000,
+    };
+
+    return this.tokenInfo.accessToken;
+  }
+}
