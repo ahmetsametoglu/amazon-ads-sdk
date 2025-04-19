@@ -1,0 +1,31 @@
+{
+  "name": "amazon-ads-sdk",
+  "version": "1.0.0",
+  "description": "Amazon Advertising API SDK for Node.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "generate": "openapi-generator-cli generate -i ./specs/sponsored-products.json -g typescript-axios -o ./src/generated/sponsored-products --skip-validate-spec",
+    "build": "tsc",
+    "test": "jest",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "amazon",
+    "advertising",
+    "api",
+    "sdk",
+    "sponsored-products"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.19.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.1",
+    "axios": "^1.8.4",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.2",
+    "typescript": "^5.8.3"
+  }
+}
