@@ -7,7 +7,12 @@
   "scripts": {
     "generate": "openapi-generator-cli generate -i ./specs/sponsored-products.json -g typescript-axios -o ./src/generated/sponsored-products --skip-validate-spec",
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --watchAll=false",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --watchAll=false",
+    "test:single": "jest -t --watchAll=false",
+    "test:file": "jest --testPathPattern --watchAll=false",
+    "test:integration": "NODE_ENV=test jest -c jest.config.js src/modules/__tests__/profiles.test.ts --testTimeout=30000 --watchAll=false",
     "prepare": "npm run build"
   },
   "keywords": [
@@ -27,5 +32,8 @@
     "jest": "^29.7.0",
     "ts-jest": "^29.3.2",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
   }
 }

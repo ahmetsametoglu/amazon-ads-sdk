@@ -1,0 +1,5 @@
+{
+  "jest.autoRun": "off",
+  "jest.autoEnable": false,
+  "jest.enableCodeLens": false
+}
