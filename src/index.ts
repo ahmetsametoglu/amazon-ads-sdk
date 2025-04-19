@@ -3,6 +3,7 @@ import { CampaignsModule } from './modules/campaigns';
 import { ProfilesModule } from './modules/profiles';
 import { AdGroupsModule } from './modules/ad-groups';
 import { ProductAdsModule } from './modules/product-ads';
+import { KeywordsModule } from './modules/keywords';
 import dotenv from 'dotenv';
 
 // Load environment variables
@@ -13,6 +14,7 @@ export class AmazonAdsSDK extends BaseApi {
   private profilesModule: ProfilesModule;
   private adGroupsModule: AdGroupsModule;
   private productAdsModule: ProductAdsModule;
+  private keywordsModule: KeywordsModule;
 
   constructor(config?: Partial<BaseConfig>) {
     // Environment variables'dan config oluştur
@@ -31,6 +33,7 @@ export class AmazonAdsSDK extends BaseApi {
     this.profilesModule = new ProfilesModule(this.config);
     this.adGroupsModule = new AdGroupsModule(this.config);
     this.productAdsModule = new ProductAdsModule(this.config);
+    this.keywordsModule = new KeywordsModule(this.config);
   }
 
   public get campaigns() {
@@ -48,9 +51,14 @@ export class AmazonAdsSDK extends BaseApi {
   public get productAds() {
     return this.productAdsModule;
   }
+
+  public get keywords() {
+    return this.keywordsModule;
+  }
 }
 
 export * from './generated/sponsored-products';
 export * from './modules/ad-groups';
 export * from './modules/base';
 export * from './modules/product-ads';
+export * from './modules/keywords';
