@@ -1,6 +1,6 @@
-import { BaseConfig } from "./base";
-import { BaseApi } from "./base";
-import { RawAxiosRequestConfig } from "axios";
+import { BaseConfig } from './base';
+import { BaseApi } from './base';
+import { RawAxiosRequestConfig } from 'axios';
 
 // API Response Tipleri
 export interface Profile {
@@ -12,9 +12,9 @@ export interface Profile {
   accountInfo: {
     marketplaceStringId: string;
     id: string;
-    type: "vendor" | "seller" | "agency";
+    type: 'vendor' | 'seller' | 'agency';
     name: string;
-    subType?: "KDP_AUTHOR" | "AMAZON_ATTRIBUTION";
+    subType?: 'KDP_AUTHOR' | 'AMAZON_ATTRIBUTION';
     validPaymentMethod?: boolean;
   };
 }
@@ -26,22 +26,21 @@ export interface ProfileResponse {
 }
 
 export interface ListProfilesParams {
-  apiProgram?:
-    | "billing"
-    | "campaign"
-    | "paymentMethod"
-    | "store"
-    | "report"
-    | "account"
-    | "posts";
-  accessLevel?: "edit" | "view";
-  profileTypeFilter?: "seller" | "vendor" | "agency";
-  validPaymentMethodFilter?: "true" | "false";
+  apiProgram?: 'billing' | 'campaign' | 'paymentMethod' | 'store' | 'report' | 'account' | 'posts';
+  accessLevel?: 'edit' | 'view';
+  profileTypeFilter?: 'seller' | 'vendor' | 'agency';
+  validPaymentMethodFilter?: 'true' | 'false';
 }
 
 export class ProfilesModule extends BaseApi {
   constructor(config: BaseConfig) {
     super(config);
+
+    // Content-Type'ı profiles modülü için ayarla
+    this.axiosInstance.interceptors.request.use(config => {
+      config.headers['Content-Type'] = 'application/json';
+      return config;
+    });
   }
 
   /**
@@ -50,15 +49,12 @@ export class ProfilesModule extends BaseApi {
    * @param options Axios request seçenekleri
    * @returns Profile listesi
    */
-  async list(
-    params?: ListProfilesParams,
-    options?: RawAxiosRequestConfig
-  ): Promise<Profile[]> {
-    const response = await this.axiosInstance.get("/v2/profiles", {
+  async list(params?: ListProfilesParams, options?: RawAxiosRequestConfig): Promise<Profile[]> {
+    const response = await this.axiosInstance.get('/v2/profiles', {
       ...options,
       headers: {
         ...options?.headers,
-        "Amazon-Advertising-API-ClientId": this.clientId,
+        'Amazon-Advertising-API-ClientId': this.clientId,
       },
       params,
     });
@@ -71,15 +67,12 @@ export class ProfilesModule extends BaseApi {
    * @param options Axios request seçenekleri
    * @returns Profile detayları
    */
-  async getById(
-    profileId: number,
-    options?: RawAxiosRequestConfig
-  ): Promise<Profile> {
+  async getById(profileId: number, options?: RawAxiosRequestConfig): Promise<Profile> {
     const response = await this.axiosInstance.get(`/v2/profiles/${profileId}`, {
       ...options,
       headers: {
         ...options?.headers,
-        "Amazon-Advertising-API-ClientId": this.clientId,
+        'Amazon-Advertising-API-ClientId': this.clientId,
       },
     });
     return response.data;
@@ -91,15 +84,12 @@ export class ProfilesModule extends BaseApi {
    * @param options Axios request seçenekleri
    * @returns Güncelleme sonuçları
    */
-  async update(
-    profiles: Partial<Profile>[],
-    options?: RawAxiosRequestConfig
-  ): Promise<ProfileResponse[]> {
-    const response = await this.axiosInstance.put("/v2/profiles", profiles, {
+  async update(profiles: Partial<Profile>[], options?: RawAxiosRequestConfig): Promise<ProfileResponse[]> {
+    const response = await this.axiosInstance.put('/v2/profiles', profiles, {
       ...options,
       headers: {
         ...options?.headers,
-        "Amazon-Advertising-API-ClientId": this.clientId,
+        'Amazon-Advertising-API-ClientId': this.clientId,
       },
     });
     return response.data;
