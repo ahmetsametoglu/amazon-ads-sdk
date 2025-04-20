@@ -5,19 +5,19 @@ TypeScript/JavaScript SDK for Amazon Advertising API.
 ## Installation
 
 ```bash
-npm install @ayas/amazon-ads-sdk
+npm install amazon-ads-sdk-ayas
 ```
 
 or
 
 ```bash
-yarn add @ayas/amazon-ads-sdk
+yarn add amazon-ads-sdk-ayas
 ```
 
 ## Usage
 
 ```typescript
-import { AmazonAdsSDK } from '@ayas/amazon-ads-sdk';
+import { AmazonAdsSDK } from 'amazon-ads-sdk-ayas';
 
 const sdk = new AmazonAdsSDK({
   clientId: 'your-client-id',
