@@ -7,6 +7,7 @@ import { KeywordsModule } from './modules/keywords';
 import { NegativeKeywordsModule } from './modules/negative-keywords';
 import { CampaignNegativeKeywordsModule } from './modules/campaign-negative-keywords';
 import { KeywordRecommendationsModule } from './modules/keyword-recommendations';
+import { CampaignOptimizationRulesModule } from './modules/campaign-optimization-rules';
 import dotenv from 'dotenv';
 
 // Load environment variables
@@ -21,6 +22,7 @@ export class AmazonAdsSDK extends BaseApi {
   private negativeKeywordsModule: NegativeKeywordsModule;
   private campaignNegativeKeywordsModule: CampaignNegativeKeywordsModule;
   private keywordRecommendationsModule: KeywordRecommendationsModule;
+  private campaignOptimizationRulesModule: CampaignOptimizationRulesModule;
 
   constructor(config?: Partial<BaseConfig>) {
     // Environment variables'dan config oluştur
@@ -43,6 +45,7 @@ export class AmazonAdsSDK extends BaseApi {
     this.negativeKeywordsModule = new NegativeKeywordsModule(this.config);
     this.campaignNegativeKeywordsModule = new CampaignNegativeKeywordsModule(this.config);
     this.keywordRecommendationsModule = new KeywordRecommendationsModule(this.config);
+    this.campaignOptimizationRulesModule = new CampaignOptimizationRulesModule(this.config);
   }
 
   public get campaigns() {
@@ -76,6 +79,10 @@ export class AmazonAdsSDK extends BaseApi {
   public get keywordRecommendations() {
     return this.keywordRecommendationsModule;
   }
+
+  public get campaignOptimizationRules() {
+    return this.campaignOptimizationRulesModule;
+  }
 }
 
 export * from './generated/sponsored-products';
@@ -86,3 +93,4 @@ export * from './modules/keywords';
 export * from './modules/negative-keywords';
 export * from './modules/campaign-negative-keywords';
 export * from './modules/keyword-recommendations';
+export * from './modules/campaign-optimization-rules';
