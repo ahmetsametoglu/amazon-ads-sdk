@@ -1,43 +1,45 @@
 {
-  "name": "amazon-ads-sdk",
+  "name": "@ayas/amazon-ads-sdk",
   "version": "1.0.0",
-  "description": "Amazon Advertising API SDK for Node.js",
+  "description": "Amazon Advertising API SDK for TypeScript/JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "generate": "openapi-generator-cli generate -i ./specs/sponsored-products.json -g typescript-axios -o ./src/generated/sponsored-products --skip-validate-spec",
     "build": "tsc",
-    "test": "jest --watchAll=false",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --watchAll=false",
-    "test:single": "jest -t --watchAll=false",
-    "test:file": "jest --testPathPattern --watchAll=false",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "test:integration": "NODE_ENV=test jest -c jest.config.js src/modules/__tests__/profiles.test.ts --testTimeout=30000 --watchAll=false",
     "prepare": "npm run build",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\""
+    "test": "jest",
+    "lint": "eslint src --ext .ts"
   },
   "keywords": [
     "amazon",
     "advertising",
-    "api",
     "sdk",
-    "sponsored-products"
+    "api",
+    "sponsored-products",
+    "typescript"
   ],
-  "author": "",
+  "author": "Ayas",
   "license": "MIT",
-  "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.19.1",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22.14.1",
-    "axios": "^1.8.4",
-    "jest": "^29.7.0",
-    "prettier": "^3.2.5",
-    "ts-jest": "^29.3.2",
-    "typescript": "^5.8.3"
-  },
   "dependencies": {
-    "dotenv": "^16.5.0"
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
