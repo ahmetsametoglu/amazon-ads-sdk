@@ -1,6 +1,7 @@
 import { BaseConfig } from './modules/base';
 import { SponsoredProducts } from './namespaces/sponsored-products';
 import { Targeting } from './namespaces/targeting';
+import { Profiles } from './namespaces/profiles';
 import dotenv from 'dotenv';
 
 // Load environment variables
@@ -9,7 +10,7 @@ dotenv.config();
 export class AmazonAdsSDK {
   private sponsoredProductsAPI: SponsoredProducts.API;
   private targetingAPI: Targeting.API;
-
+  private profilesAPI: Profiles.API;
   constructor(config?: Partial<BaseConfig>) {
     // Environment variables'dan config oluştur
     const defaultConfig: BaseConfig = {
@@ -25,6 +26,7 @@ export class AmazonAdsSDK {
 
     this.sponsoredProductsAPI = new SponsoredProducts.API(finalConfig);
     this.targetingAPI = new Targeting.API(finalConfig);
+    this.profilesAPI = new Profiles.API(finalConfig);
   }
 
   public get sponsoredProducts() {
@@ -34,7 +36,12 @@ export class AmazonAdsSDK {
   public get targeting() {
     return this.targetingAPI;
   }
+
+  public get profiles() {
+    return this.profilesAPI;
+  }
 }
 
 // Export namespaces
-export { SponsoredProducts, Targeting };
+export { SponsoredProducts, Targeting, Profiles };
+
