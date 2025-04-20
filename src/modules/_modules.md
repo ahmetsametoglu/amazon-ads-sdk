@@ -13,11 +13,10 @@
 - KeywordGroupTargetingRecommendations
 - NegativeTargetingClauses
 - TargetingClauses
+- CampaignNegativeTargetingClauses
 
 - BudgetRules
 - OptimizationRules
-
-- CampaignNegativeTargetingClauses
 
 - BudgetRecommendationNewCampaigns
 - BudgetRulesRecommendation
