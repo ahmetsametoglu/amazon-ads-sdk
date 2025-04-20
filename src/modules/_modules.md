@@ -1,28 +1,27 @@
-- Campaigns
-- Keywords
-- ProductAds
 - AdGroups
-- NegativeKeywords
 - CampaignNegativeKeywords
+- Campaigns
 - KeywordTargets
-
-- BudgetUsage
-- ProductTargeting
+- Keywords
+- NegativeKeywords
+- ProductAds
+- CampaignOptimizationRules
 - TargetPromotionGroups
+- ProductTargeting
+- ProductRecommendationService
+- BudgetUsage
+- KeywordGroupTargetingRecommendations
+- NegativeTargetingClauses
+- TargetingClauses
 
 - BudgetRules
-- CampaignOptimizationRules
 - OptimizationRules
 
-- TargetingClauses
 - CampaignNegativeTargetingClauses
-- NegativeTargetingClauses
 
 - BudgetRecommendationNewCampaigns
 - BudgetRulesRecommendation
 - BudgetRecommendationsAndMissedOpportunities
 - ConsolidatedRecommendations
-- KeywordGroupTargetingRecommendations
 - MultiCountryThemeBasedBidRecommendations
-- ProductRecommendationService
 - ThemeBasedBidRecommendations
