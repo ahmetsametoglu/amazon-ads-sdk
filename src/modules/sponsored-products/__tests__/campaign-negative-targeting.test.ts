@@ -4,7 +4,7 @@ import {
   SponsoredProductsCreateCampaignNegativeTargetingClause,
   SponsoredProductsUpdateCampaignNegativeTargetingClause,
   SponsoredProductsCreateOrUpdateNegativeTargetingExpressionPredicateType,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 
 describe('CampaignNegativeTargetingModule', () => {
   let testConfig: TestConfig;

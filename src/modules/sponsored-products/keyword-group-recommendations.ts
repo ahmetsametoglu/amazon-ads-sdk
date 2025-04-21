@@ -1,5 +1,5 @@
-import { BaseApi, BaseConfig } from './base';
-import { KeywordGroupTargetingRecommendationsApi, KeywordGroupsRecommendationsRequest } from '../generated/sponsored-products';
+import { BaseApi, BaseConfig } from '../base';
+import { KeywordGroupTargetingRecommendationsApi, KeywordGroupsRecommendationsRequest } from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

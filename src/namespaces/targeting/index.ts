@@ -1,8 +1,8 @@
-import { TargetingModule } from '../../modules/targeting';
-import { NegativeTargetingModule } from '../../modules/negative-targeting';
-import { CampaignNegativeTargetingModule } from '../../modules/campaign-negative-targeting';
-import { ProductTargetingModule } from '../../modules/product-targeting';
-import { TargetPromotionGroupsModule } from '../../modules/target-promotion-groups';
+import { TargetingModule } from '../../modules/sponsored-products/targeting';
+import { NegativeTargetingModule } from '../../modules/sponsored-products/negative-targeting';
+import { CampaignNegativeTargetingModule } from '../../modules/sponsored-products/campaign-negative-targeting';
+import { ProductTargetingModule } from '../../modules/sponsored-products/product-targeting';
+import { TargetPromotionGroupsModule } from '../../modules/sponsored-products/target-promotion-groups';
 import { BaseConfig } from '../../modules/base';
 
 export namespace Targeting {
@@ -43,4 +43,4 @@ export namespace Targeting {
       return this.targetPromotionGroupsModule;
     }
   }
-}
+} 

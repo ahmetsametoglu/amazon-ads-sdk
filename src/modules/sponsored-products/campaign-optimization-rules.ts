@@ -1,11 +1,11 @@
-import { BaseApi, BaseConfig } from './base';
+import { BaseApi, BaseConfig } from '../base';
 import {
   CampaignOptimizationRulesApi,
   CreateSPCampaignOptimizationRulesRequest,
   UpdateSPCampaignOptimizationRulesRequest,
   SPCampaignOptimizationRecommendationsAPIRequest,
   SPCampaignOptimizationNotificationAPIRequest,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

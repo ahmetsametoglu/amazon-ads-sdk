@@ -1,11 +1,11 @@
-import { KeywordsApi } from '../generated/sponsored-products/api';
-import { BaseApi, BaseConfig } from './base';
+import { KeywordsApi } from '../../generated/sponsored-products/api';
+import { BaseApi, BaseConfig } from '../base';
 import {
   SponsoredProductsCreateSponsoredProductsKeywordsRequestContent as CreateKeywordRequestContent,
   SponsoredProductsDeleteSponsoredProductsKeywordsRequestContent as DeleteKeywordRequestContent,
   SponsoredProductsListSponsoredProductsKeywordsRequestContent as ListKeywordsRequestContent,
   SponsoredProductsUpdateSponsoredProductsKeywordsRequestContent as UpdateKeywordRequestContent,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

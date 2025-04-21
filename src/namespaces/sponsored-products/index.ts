@@ -1,11 +1,11 @@
-import { CampaignsModule } from '../../modules/campaigns';
-import { AdGroupsModule } from '../../modules/ad-groups';
-import { ProductAdsModule } from '../../modules/product-ads';
-import { KeywordsModule } from '../../modules/keywords';
-import { NegativeKeywordsModule } from '../../modules/negative-keywords';
-import { CampaignNegativeKeywordsModule } from '../../modules/campaign-negative-keywords';
-import { KeywordRecommendationsModule } from '../../modules/keyword-recommendations';
-import { CampaignOptimizationRulesModule } from '../../modules/campaign-optimization-rules';
+import { CampaignsModule } from '../../modules/sponsored-products/campaigns';
+import { AdGroupsModule } from '../../modules/sponsored-products/ad-groups';
+import { ProductAdsModule } from '../../modules/sponsored-products/product-ads';
+import { KeywordsModule } from '../../modules/sponsored-products/keywords';
+import { NegativeKeywordsModule } from '../../modules/sponsored-products/negative-keywords';
+import { CampaignNegativeKeywordsModule } from '../../modules/sponsored-products/campaign-negative-keywords';
+import { KeywordRecommendationsModule } from '../../modules/sponsored-products/keyword-recommendations';
+import { CampaignOptimizationRulesModule } from '../../modules/sponsored-products/campaign-optimization-rules';
 import { BaseConfig } from '../../modules/base';
 
 export namespace SponsoredProducts {
@@ -67,11 +67,11 @@ export namespace SponsoredProducts {
 }
 
 // Re-export modules outside of namespace
-export * from '../../modules/campaigns';
-export * from '../../modules/ad-groups';
-export * from '../../modules/product-ads';
-export * from '../../modules/keywords';
-export * from '../../modules/negative-keywords';
-export * from '../../modules/campaign-negative-keywords';
-export * from '../../modules/keyword-recommendations';
-export * from '../../modules/campaign-optimization-rules';
+export * from '../../modules/sponsored-products/campaigns';
+export * from '../../modules/sponsored-products/ad-groups';
+export * from '../../modules/sponsored-products/product-ads';
+export * from '../../modules/sponsored-products/keywords';
+export * from '../../modules/sponsored-products/negative-keywords';
+export * from '../../modules/sponsored-products/campaign-negative-keywords';
+export * from '../../modules/sponsored-products/keyword-recommendations';
+export * from '../../modules/sponsored-products/campaign-optimization-rules';

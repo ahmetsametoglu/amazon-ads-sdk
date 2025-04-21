@@ -1,11 +1,11 @@
-import { BaseApi, BaseConfig } from './base';
+import { BaseApi, BaseConfig } from '../base';
 import {
   TargetingClausesApi,
   SponsoredProductsCreateSponsoredProductsTargetingClausesRequestContent,
   SponsoredProductsDeleteSponsoredProductsTargetingClausesRequestContent,
   SponsoredProductsListSponsoredProductsTargetingClausesRequestContent,
   SponsoredProductsUpdateSponsoredProductsTargetingClausesRequestContent,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

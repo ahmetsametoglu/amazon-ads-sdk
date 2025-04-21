@@ -1,6 +1,6 @@
-import { KeywordTargetsApi } from '../generated/sponsored-products/api';
-import { BaseApi, BaseConfig } from './base';
-import { GetGlobalRankedKeywordRecommendationRequest, GetRankedKeywordRecommendationRequest } from '../generated/sponsored-products';
+import { KeywordTargetsApi } from '../../generated/sponsored-products/api';
+import { BaseApi, BaseConfig } from '../base';
+import { GetGlobalRankedKeywordRecommendationRequest, GetRankedKeywordRecommendationRequest } from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

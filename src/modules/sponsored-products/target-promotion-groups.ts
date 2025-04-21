@@ -1,4 +1,4 @@
-import { BaseApi, BaseConfig } from './base';
+import { BaseApi, BaseConfig } from '../base';
 import {
   TargetPromotionGroupsApi,
   SponsoredProductsListTargetPromotionGroupsV2RequestContent as ListTargetPromotionGroupsRequestContent,
@@ -6,7 +6,7 @@ import {
   SponsoredProductsGetTargetPromotionGroupsRecommendationsRequestContent as GetTargetPromotionGroupsRecommendationsRequestContent,
   SponsoredProductsListTargetPromotionGroupTargetsRequestContent as ListTargetPromotionGroupTargetsRequestContent,
   SponsoredProductsCreateTargetPromotionGroupTargetsRequestContent as CreateTargetPromotionGroupTargetsRequestContent,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

@@ -1,11 +1,11 @@
-import { AdGroupsApi } from '../generated/sponsored-products/api';
-import { BaseApi, BaseConfig } from './base';
+import { AdGroupsApi } from '../../generated/sponsored-products/api';
+import { BaseApi, BaseConfig } from '../base';
 import {
   SponsoredProductsCreateSponsoredProductsAdGroupsRequestContent as CreateAdGroupRequestContent,
   SponsoredProductsDeleteSponsoredProductsAdGroupsRequestContent as DeleteAdGroupRequestContent,
   SponsoredProductsListSponsoredProductsAdGroupsRequestContent as ListAdGroupsRequestContent,
   SponsoredProductsUpdateSponsoredProductsAdGroupsRequestContent as UpdateAdGroupRequestContent,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

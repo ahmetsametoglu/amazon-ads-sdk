@@ -1,4 +1,4 @@
-import { AmazonAdsSDK } from '../../..';
+import { AmazonAdsSDK } from '../../../..';
 import dotenv from 'dotenv';
 
 dotenv.config();

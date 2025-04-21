@@ -1,4 +1,4 @@
-import { BaseApi, BaseConfig } from './base';
+import { BaseApi, BaseConfig } from '../base';
 import {
   ProductTargetingApi,
   GetCategoryRecommendationsForAsinsRequest,
@@ -7,7 +7,7 @@ import {
   GetCategoryRecommendationsForASINsLocaleEnum,
   GetRefinementsForCategoryLocaleEnum,
   GetTargetableCategoriesLocaleEnum,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**

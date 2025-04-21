@@ -1,11 +1,11 @@
-import { NegativeKeywordsApi } from '../generated/sponsored-products/api';
-import { BaseApi, BaseConfig } from './base';
+import { NegativeKeywordsApi } from '../../generated/sponsored-products/api';
+import { BaseApi, BaseConfig } from '../base';
 import {
   SponsoredProductsCreateSponsoredProductsNegativeKeywordsRequestContent as CreateNegativeKeywordRequestContent,
   SponsoredProductsDeleteSponsoredProductsNegativeKeywordsRequestContent as DeleteNegativeKeywordRequestContent,
   SponsoredProductsListSponsoredProductsNegativeKeywordsRequestContent as ListNegativeKeywordsRequestContent,
   SponsoredProductsUpdateSponsoredProductsNegativeKeywordsRequestContent as UpdateNegativeKeywordRequestContent,
-} from '../generated/sponsored-products';
+} from '../../generated/sponsored-products';
 import { RawAxiosRequestConfig } from 'axios';
 
 /**
