@@ -1,6 +1,6 @@
 {
-  "name": "amazon-ads-sdk-ayas",
-  "version": "1.0.0",
+  "name": "@ayasdev/amazon-ads-sdk",
+  "version": "1.0.1",
   "description": "A comprehensive TypeScript/JavaScript SDK for Amazon Advertising API with full type support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

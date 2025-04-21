@@ -2,16 +2,30 @@
 
 TypeScript/JavaScript SDK for Amazon Advertising API.
 
+> ⚠️ **Important Notice**
+> 
+> This SDK is primarily developed for internal use in our company's applications. As such:
+> - The API structure may undergo significant changes without prior notice
+> - Breaking changes are likely to occur frequently
+> - Features may be added or removed based on our internal needs
+> 
+> **Recommendation**: If you want to use this SDK in your project, we strongly recommend:
+> 1. Fork the repository
+> 2. Create your own package under your organization's name
+> 3. Maintain your own version based on your specific requirements
+> 
+> This approach will give you full control over the SDK's development and protect you from unexpected breaking changes.
+
 ## Installation
 
 ```bash
-npm install amazon-ads-sdk-ayas
+npm install @ayasdev/amazon-ads-sdk
 ```
 
 or
 
 ```bash
-yarn add amazon-ads-sdk-ayas
+yarn add @ayasdev/amazon-ads-sdk
 ```
 
 ## Usage
