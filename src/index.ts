@@ -1,6 +1,5 @@
 import { BaseConfig } from './modules/base';
-import { SponsoredProducts } from './namespaces/sponsored-products';
-import { Targeting } from './namespaces/targeting';
+import { SP } from './namespaces/sp';
 import { Profiles } from './namespaces/profiles';
 import { AuthModule } from './modules/auth';
 import dotenv from 'dotenv';
@@ -9,8 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export class AmazonAdsSDK {
-  private sponsoredProductsAPI: SponsoredProducts.API;
-  private targetingAPI: Targeting.API;
+  private sponsoredProductsAPI: SP.API;
   private profilesAPI: Profiles.API;
   private authModule: AuthModule;
 
@@ -28,8 +26,7 @@ export class AmazonAdsSDK {
     // Kullanıcının verdiği config ile environment variables'dan gelen config'i birleştir
     const finalConfig = { ...defaultConfig, ...config };
 
-    this.sponsoredProductsAPI = new SponsoredProducts.API(finalConfig);
-    this.targetingAPI = new Targeting.API(finalConfig);
+    this.sponsoredProductsAPI = new SP.API(finalConfig);
     this.profilesAPI = new Profiles.API(finalConfig);
     this.authModule = new AuthModule({
       clientId: finalConfig.clientId,
@@ -39,12 +36,8 @@ export class AmazonAdsSDK {
     });
   }
 
-  public get sponsoredProducts() {
+  public get sp() {
     return this.sponsoredProductsAPI;
-  }
-
-  public get targeting() {
-    return this.targetingAPI;
   }
 
   public get profiles() {
@@ -57,6 +50,6 @@ export class AmazonAdsSDK {
 }
 
 // Export namespaces and types
-export { SponsoredProducts, Targeting, Profiles };
-export type { BaseConfig, AuthConfig } from './modules/base';
+export { SP };
+export type { BaseConfig } from './modules/base';
 
