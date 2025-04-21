@@ -4,10 +4,19 @@ import axios, { AxiosInstance } from 'axios';
 export interface BaseConfig {
   clientId: string;
   clientSecret: string;
-  refreshToken: string;
   region: 'NA' | 'EU' | 'FE';
   sandbox?: boolean;
+  refreshToken?: string;
+  redirectUri?: string;
 }
+
+export interface AuthConfig {
+  clientId: string;
+  clientSecret: string;
+  region: 'NA' | 'EU' | 'FE';
+  redirectUri: string;
+}
+
 interface TokenInfo {
   accessToken: string;
   expiresAt: number;
@@ -51,7 +60,7 @@ export abstract class BaseApi {
       : endpoints[this.config.region];
   }
 
-  private getTokenEndpoint(): string {
+  protected getTokenEndpoint(): string {
     const endpoints = {
       NA: 'https://api.amazon.com/auth/o2/token',
       EU: 'https://api.amazon.co.uk/auth/o2/token',
