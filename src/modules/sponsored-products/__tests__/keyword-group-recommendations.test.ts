@@ -8,7 +8,7 @@ describe('KeywordGroupRecommendationsModule', () => {
   });
 
   it('should get keyword group recommendations', async () => {
-    const response = await testConfig.sdk.keywordGroupRecommendations
+    const response = await testConfig.sdk.keywords.recommendations.groups
       .getKeywordGroupRecommendations(
         testConfig.profileId,
         {

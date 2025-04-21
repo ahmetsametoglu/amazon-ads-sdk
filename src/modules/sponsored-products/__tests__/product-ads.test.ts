@@ -5,7 +5,7 @@ import {
   SponsoredProductsUpdateSponsoredProductsProductAdsRequestContent,
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsProductAd,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('ProductAdsModule Integration Tests', () => {
@@ -40,7 +40,7 @@ describe('ProductAdsModule Integration Tests', () => {
       expect(successResults).toHaveLength(1);
 
       const successResult = successResults?.[0];
-      if (!successResult) throw new Error('Product Ad oluşturulamadı');
+      if (!successResult) throw new Error('Product Ad could not be created');
       expect(successResult).toBeDefined();
       expect(successResult.adId).toBeDefined();
 
@@ -91,7 +91,7 @@ describe('ProductAdsModule Integration Tests', () => {
       expect(successResults).toHaveLength(1);
 
       const successResult = successResults?.[0];
-      if (!successResult) throw new Error('Product Ad güncellenemedi');
+      if (!successResult) throw new Error('Product Ad could not be updated');
       expect(successResult).toBeDefined();
       expect(successResult.productAd?.state).toBe(SponsoredProductsCreateOrUpdateEntityState.Paused);
     }, 30000);

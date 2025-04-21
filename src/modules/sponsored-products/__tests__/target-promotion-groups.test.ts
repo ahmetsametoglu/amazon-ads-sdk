@@ -6,7 +6,7 @@ import {
   SponsoredProductsCreateTargetRequest,
   SponsoredProductsTargetPromotionGroupV2,
   SponsoredProductsObjectIdFilter,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('TargetPromotionGroupsModule Integration Tests', () => {
@@ -29,7 +29,7 @@ describe('TargetPromotionGroupsModule Integration Tests', () => {
         ],
       };
 
-      const response = await testConfig.sdk.targetPromotionGroups.create(testConfig.profileId, content).catch(error => {
+      const response = await testConfig.sdk.targeting.product.promotions.create(testConfig.profileId, content).catch(error => {
         debugger;
         throw error;
       });
@@ -42,14 +42,14 @@ describe('TargetPromotionGroupsModule Integration Tests', () => {
       if (group.targetPromotionGroupId) {
         createdGroupId = group.targetPromotionGroupId;
       } else {
-        throw new Error('Target Promotion Group ID bulunamadı');
+        throw new Error('Target Promotion Group ID not found');
       }
     }, 30000);
 
     it('should list target promotion groups and find the created one', async () => {
       const content: SponsoredProductsListTargetPromotionGroupsV2RequestContent = {};
 
-      const response = await testConfig.sdk.targetPromotionGroups.list(testConfig.profileId, content).catch(error => {
+      const response = await testConfig.sdk.targeting.product.promotions.list(testConfig.profileId, content).catch(error => {
         debugger;
         throw error;
       });
@@ -72,7 +72,7 @@ describe('TargetPromotionGroupsModule Integration Tests', () => {
         targets: [target],
       };
 
-      const response = await testConfig.sdk.targetPromotionGroups.createTargets(testConfig.profileId, content).catch(error => {
+      const response = await testConfig.sdk.targeting.product.promotions.createTargets(testConfig.profileId, content).catch(error => {
         debugger;
         throw error;
       });
@@ -82,7 +82,7 @@ describe('TargetPromotionGroupsModule Integration Tests', () => {
     }, 30000);
 
     it('should list targets for the promotion group', async () => {
-      const response = await testConfig.sdk.targetPromotionGroups
+      const response = await testConfig.sdk.targeting.product.promotions
         .listTargets(testConfig.profileId, {
           targetPromotionGroupIdFilter: {
             include: [createdGroupId],
@@ -107,7 +107,7 @@ describe('TargetPromotionGroupsModule Integration Tests', () => {
         maxResults: 10,
       };
 
-      const response = await testConfig.sdk.targetPromotionGroups.getRecommendations(testConfig.profileId, content).catch(error => {
+      const response = await testConfig.sdk.targeting.product.promotions.getRecommendations(testConfig.profileId, content).catch(error => {
         debugger;
         throw error;
       });

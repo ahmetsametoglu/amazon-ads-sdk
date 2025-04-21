@@ -6,7 +6,7 @@ import {
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsKeyword,
   SponsoredProductsKeywordMatchType,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('KeywordsModule Integration Tests', () => {

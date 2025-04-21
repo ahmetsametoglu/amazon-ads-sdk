@@ -1,4 +1,3 @@
-import { AmazonAdsSDK } from '../..';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('ProductTargetingModule', () => {
@@ -9,8 +8,8 @@ describe('ProductTargetingModule', () => {
   });
 
   it('should get category recommendations for ASINs', async () => {
-    const response = await testConfig.sdk.productTargeting
-      .getCategoryRecommendationsForASINs(testConfig.profileId, {
+    const response = await testConfig.sdk.targeting.product
+      .getCategoryRecommendations(testConfig.profileId, {
         asins: ['B0F54QP21F'],
       })
       .catch(error => {
@@ -23,7 +22,7 @@ describe('ProductTargetingModule', () => {
   }, 30000);
 
   it('should get negative brands', async () => {
-    const response = await testConfig.sdk.productTargeting.getNegativeBrands(testConfig.profileId).catch(error => {
+    const response = await testConfig.sdk.targeting.product.getNegativeBrands(testConfig.profileId).catch(error => {
       debugger;
       throw error;
     });
@@ -33,7 +32,7 @@ describe('ProductTargetingModule', () => {
   }, 30000);
 
   it('should get refinements for categories', async () => {
-    const response = await testConfig.sdk.productTargeting.getRefinementsForCategory(testConfig.profileId, '3138220031').catch(error => {
+    const response = await testConfig.sdk.targeting.product.getRefinements(testConfig.profileId, '3138220031').catch(error => {
       debugger;
       throw error;
     });
@@ -43,8 +42,8 @@ describe('ProductTargetingModule', () => {
   }, 30000);
 
   it('should get targetable ASIN counts', async () => {
-    const response = await testConfig.sdk.productTargeting
-      .getTargetableASINCounts(testConfig.profileId, {
+    const response = await testConfig.sdk.targeting.product
+      .getASINCounts(testConfig.profileId, {
         category: '3138220031',
       })
       .catch(error => {
@@ -57,7 +56,7 @@ describe('ProductTargetingModule', () => {
   }, 30000);
 
   it('should get targetable categories', async () => {
-    const response = await testConfig.sdk.productTargeting.getTargetableCategories(testConfig.profileId).catch(error => {
+    const response = await testConfig.sdk.targeting.product.getCategories(testConfig.profileId).catch(error => {
       debugger;
       throw error;
     });
@@ -67,7 +66,7 @@ describe('ProductTargetingModule', () => {
   }, 30000);
 
   it('should search brands', async () => {
-    const response = await testConfig.sdk.productTargeting
+    const response = await testConfig.sdk.targeting.product
       .searchBrands(testConfig.profileId, {
         keyword: 'samsung',
       })

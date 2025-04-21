@@ -6,7 +6,7 @@ import {
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsDeleteSponsoredProductsTargetingClausesRequestContent,
   SponsoredProductsObjectIdFilter,
-} from '../../generated/sponsored-products/api';
+} from '../../../generated/sponsored-products';
 
 describe('TargetingModule', () => {
   let testConfig: TestConfig;
@@ -34,13 +34,13 @@ describe('TargetingModule', () => {
       ],
     };
 
-    const response = await testConfig.sdk.targeting.createTargetingClauses(testConfig.profileId, request);
+    const response = await testConfig.sdk.targeting.create(testConfig.profileId, request);
     expect(response).toBeDefined();
     expect(response.data).toBeDefined();
   });
 
   it('should list targeting clauses', async () => {
-    const response = await testConfig.sdk.targeting.listTargetingClauses(testConfig.profileId);
+    const response = await testConfig.sdk.targeting.list(testConfig.profileId);
     expect(response).toBeDefined();
     expect(response.data).toBeDefined();
   });
@@ -56,7 +56,7 @@ describe('TargetingModule', () => {
       ],
     };
 
-    const response = await testConfig.sdk.targeting.updateTargetingClauses(testConfig.profileId, request);
+    const response = await testConfig.sdk.targeting.update(testConfig.profileId, request);
     expect(response).toBeDefined();
     expect(response.data).toBeDefined();
   });
@@ -68,7 +68,7 @@ describe('TargetingModule', () => {
       } as SponsoredProductsObjectIdFilter,
     };
 
-    const response = await testConfig.sdk.targeting.deleteTargetingClauses(testConfig.profileId, request);
+    const response = await testConfig.sdk.targeting.delete(testConfig.profileId, request);
     expect(response).toBeDefined();
   });
 
@@ -91,7 +91,7 @@ describe('TargetingModule', () => {
       ],
     };
 
-    const createResponse = await testConfig.sdk.targeting.createTargetingClauses(testConfig.profileId, createRequest);
+    const createResponse = await testConfig.sdk.targeting.create(testConfig.profileId, createRequest);
     expect(createResponse.data.targetingClauses.success).toBeDefined();
     expect(Array.isArray(createResponse.data.targetingClauses.success)).toBe(true);
     expect(createResponse.data.targetingClauses.success?.length).toBeGreaterThan(0);
@@ -112,7 +112,7 @@ describe('TargetingModule', () => {
       ],
     };
 
-    const updateResponse = await testConfig.sdk.targeting.updateTargetingClauses(testConfig.profileId, updateRequest);
+    const updateResponse = await testConfig.sdk.targeting.update(testConfig.profileId, updateRequest);
     expect(updateResponse.data.targetingClauses.success).toBeDefined();
     expect(Array.isArray(updateResponse.data.targetingClauses.success)).toBe(true);
     expect(updateResponse.data.targetingClauses.success?.length).toBeGreaterThan(0);
@@ -123,7 +123,7 @@ describe('TargetingModule', () => {
       } as SponsoredProductsObjectIdFilter,
     };
 
-    const deleteResponse = await testConfig.sdk.targeting.deleteTargetingClauses(testConfig.profileId, deleteRequest);
+    const deleteResponse = await testConfig.sdk.targeting.delete(testConfig.profileId, deleteRequest);
     expect(deleteResponse.data.targetingClauses.success).toBeDefined();
     expect(Array.isArray(deleteResponse.data.targetingClauses.success)).toBe(true);
     expect(deleteResponse.data.targetingClauses.success?.length).toBeGreaterThan(0);

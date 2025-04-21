@@ -27,8 +27,8 @@ describe('CampaignNegativeTargetingModule', () => {
         ],
       };
 
-      const response = await testConfig.sdk.campaignNegativeTargeting
-        .createCampaignNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative.campaign
+        .create(testConfig.profileId, {
           campaignNegativeTargetingClauses: [negativeTargetingClause],
         })
         .catch(error => {
@@ -48,7 +48,7 @@ describe('CampaignNegativeTargetingModule', () => {
     }, 30000);
 
     it('should list campaign negative targeting clauses', async () => {
-      const response = await testConfig.sdk.campaignNegativeTargeting.listCampaignNegativeTargetingClauses(testConfig.profileId).catch(error => {
+      const response = await testConfig.sdk.targeting.negative.campaign.list(testConfig.profileId).catch(error => {
         debugger;
         throw error;
       });
@@ -63,8 +63,8 @@ describe('CampaignNegativeTargetingModule', () => {
         state: SponsoredProductsCreateOrUpdateEntityState.Paused,
       };
 
-      const response = await testConfig.sdk.campaignNegativeTargeting
-        .updateCampaignNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative.campaign
+        .update(testConfig.profileId, {
           campaignNegativeTargetingClauses: [updateClause],
         })
         .catch(error => {
@@ -77,8 +77,8 @@ describe('CampaignNegativeTargetingModule', () => {
     }, 30000);
 
     it('should delete campaign negative targeting clauses', async () => {
-      const response = await testConfig.sdk.campaignNegativeTargeting
-        .deleteCampaignNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative.campaign
+        .delete(testConfig.profileId, {
           campaignNegativeTargetIdFilter: {
             include: [createdTargetId],
           },

@@ -5,7 +5,7 @@ import {
   SponsoredProductsUpdateSponsoredProductsAdGroupsRequestContent,
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsAdGroup,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('AdGroupsModule Integration Tests', () => {
@@ -40,11 +40,11 @@ describe('AdGroupsModule Integration Tests', () => {
       expect(successResults).toHaveLength(1);
 
       const successResult = successResults?.[0];
-      if (!successResult) throw new Error('Ad Group oluşturulamadı');
+      if (!successResult) throw new Error('Failed to create Ad Group');
       expect(successResult).toBeDefined();
 
       if (successResult.adGroupId) createdAdGroupId = successResult.adGroupId;
-      else throw new Error('Ad Group ID bulunamadı');
+      else throw new Error('Ad Group ID not found');
     }, 30000);
 
     it('should list ad groups and find the created one', async () => {
@@ -88,7 +88,7 @@ describe('AdGroupsModule Integration Tests', () => {
       expect(successResults).toHaveLength(1);
 
       const successResult = successResults?.[0];
-      if (!successResult) throw new Error('Ad Group güncellenemedi');
+      if (!successResult) throw new Error('Failed to update Ad Group');
       expect(successResult).toBeDefined();
       expect(successResult.adGroup?.name).toBe(newName);
     }, 30000);

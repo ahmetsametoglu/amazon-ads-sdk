@@ -5,7 +5,7 @@ import {
   SponsoredProductsUpdateSponsoredProductsCampaignsRequestContent,
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsCampaign,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('CampaignsModule Integration Tests', () => {
@@ -49,7 +49,7 @@ describe('CampaignsModule Integration Tests', () => {
       if (createdCampaign.campaignId) {
         createdCampaignId = createdCampaign.campaignId;
       } else {
-        throw new Error('Kampanya ID bulunamadı');
+        throw new Error('Campaign ID not found');
       }
     }, 30000);
 

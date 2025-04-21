@@ -6,7 +6,7 @@ import {
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsCampaignNegativeKeyword,
   SponsoredProductsCreateOrUpdateNegativeMatchType,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('CampaignNegativeKeywordsModule Integration Tests', () => {
@@ -30,7 +30,7 @@ describe('CampaignNegativeKeywordsModule Integration Tests', () => {
         ],
       };
 
-      const response = await testConfig.sdk.campaignNegativeKeywords.create(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.campaign.create(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -53,7 +53,7 @@ describe('CampaignNegativeKeywordsModule Integration Tests', () => {
         campaignIdFilter: { include: [testConfig.campaignId] },
       };
 
-      const response = await testConfig.sdk.campaignNegativeKeywords.list(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.campaign.list(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -76,7 +76,7 @@ describe('CampaignNegativeKeywordsModule Integration Tests', () => {
         ],
       };
 
-      const response = await testConfig.sdk.campaignNegativeKeywords.update(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.campaign.update(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -94,7 +94,7 @@ describe('CampaignNegativeKeywordsModule Integration Tests', () => {
         },
       };
 
-      const response = await testConfig.sdk.campaignNegativeKeywords.delete(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.campaign.delete(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });

@@ -1,4 +1,4 @@
-import { GetGlobalRankedKeywordRecommendationRequest, GetRankedKeywordRecommendationRequest } from '../../generated/sponsored-products';
+import { GetGlobalRankedKeywordRecommendationRequest, GetRankedKeywordRecommendationRequest } from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('KeywordRecommendationsModule Integration Tests', () => {
@@ -17,8 +17,8 @@ describe('KeywordRecommendationsModule Integration Tests', () => {
         maxRecommendations: 10,
       };
 
-      const response = await testConfig.sdk.keywordRecommendations
-        .getGlobalRecommendations(
+      const response = await testConfig.sdk.keywords.recommendations
+        .getGlobal(
           testConfig.profileId,
           testConfig.profileId, // accountId yerine profileId kullanıyoruz
           request
@@ -40,7 +40,7 @@ describe('KeywordRecommendationsModule Integration Tests', () => {
         maxRecommendations: 10,
       };
 
-      const response = await testConfig.sdk.keywordRecommendations.getRecommendations(testConfig.profileId, request).catch(e => {
+      const response = await testConfig.sdk.keywords.recommendations.get(testConfig.profileId, request).catch(e => {
         debugger;
         throw e;
       });

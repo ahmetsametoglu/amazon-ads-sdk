@@ -3,7 +3,7 @@ import {
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsCreateNegativeTargetingClause,
   SponsoredProductsUpdateNegativeTargetingClause,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 
 describe('NegativeTargetingModule', () => {
   let testConfig: TestConfig;
@@ -27,8 +27,8 @@ describe('NegativeTargetingModule', () => {
         ],
       };
 
-      const response = await testConfig.sdk.negativeTargeting
-        .createNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative
+        .create(testConfig.profileId, {
           negativeTargetingClauses: [negativeTargetingClause],
         })
         .catch(error => {
@@ -43,12 +43,12 @@ describe('NegativeTargetingModule', () => {
       if (target?.targetId) {
         createdTargetId = target.targetId;
       } else {
-        throw new Error('Target ID bulunamadı');
+        throw new Error('Target ID not found');
       }
     }, 30000);
 
     it('should list negative targeting clauses', async () => {
-      const response = await testConfig.sdk.negativeTargeting.listNegativeTargetingClauses(testConfig.profileId).catch(error => {
+      const response = await testConfig.sdk.targeting.negative.list(testConfig.profileId).catch(error => {
         debugger;
         throw error;
       });
@@ -63,8 +63,8 @@ describe('NegativeTargetingModule', () => {
         state: SponsoredProductsCreateOrUpdateEntityState.Paused,
       };
 
-      const response = await testConfig.sdk.negativeTargeting
-        .updateNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative
+        .update(testConfig.profileId, {
           negativeTargetingClauses: [updateClause],
         })
         .catch(error => {
@@ -77,8 +77,8 @@ describe('NegativeTargetingModule', () => {
     }, 30000);
 
     it('should delete negative targeting clauses', async () => {
-      const response = await testConfig.sdk.negativeTargeting
-        .deleteNegativeTargetingClauses(testConfig.profileId, {
+      const response = await testConfig.sdk.targeting.negative
+        .delete(testConfig.profileId, {
           negativeTargetIdFilter: {
             include: [createdTargetId],
           },

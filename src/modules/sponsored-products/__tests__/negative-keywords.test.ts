@@ -6,7 +6,7 @@ import {
   SponsoredProductsCreateOrUpdateEntityState,
   SponsoredProductsNegativeKeyword,
   SponsoredProductsCreateOrUpdateNegativeMatchType,
-} from '../../generated/sponsored-products';
+} from '../../../generated/sponsored-products';
 import { getTestConfig, TestConfig } from './test-utils/setup';
 
 describe('NegativeKeywordsModule Integration Tests', () => {
@@ -31,7 +31,7 @@ describe('NegativeKeywordsModule Integration Tests', () => {
         ],
       };
 
-      const response = await testConfig.sdk.negativeKeywords.create(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.create(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -42,7 +42,7 @@ describe('NegativeKeywordsModule Integration Tests', () => {
       expect(successResults).toHaveLength(1);
 
       const successResult = successResults?.[0];
-      if (!successResult) throw new Error('Negative Keyword oluşturulamadı');
+      if (!successResult) throw new Error('Failed to create Negative Keyword');
       expect(successResult).toBeDefined();
       expect(successResult.negativeKeywordId).toBeDefined();
 
@@ -55,7 +55,7 @@ describe('NegativeKeywordsModule Integration Tests', () => {
         adGroupIdFilter: { include: [testConfig.adGroupId] },
       };
 
-      const response = await testConfig.sdk.negativeKeywords.list(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.list(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -78,7 +78,7 @@ describe('NegativeKeywordsModule Integration Tests', () => {
         ],
       };
 
-      const response = await testConfig.sdk.negativeKeywords.update(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.update(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });
@@ -96,7 +96,7 @@ describe('NegativeKeywordsModule Integration Tests', () => {
         },
       };
 
-      const response = await testConfig.sdk.negativeKeywords.delete(testConfig.profileId, content).catch(e => {
+      const response = await testConfig.sdk.keywords.negative.delete(testConfig.profileId, content).catch(e => {
         debugger;
         throw e;
       });

@@ -8,8 +8,8 @@ describe('BudgetUsageModule', () => {
   });
 
   it('should get campaigns budget usage', async () => {
-    const response = await testConfig.sdk.budgetUsage
-      .getCampaignsBudgetUsage(testConfig.profileId, {
+    const response = await testConfig.sdk.campaigns.budget
+      .getUsage(testConfig.profileId, {
         campaignIds: [testConfig.campaignId],
       })
       .catch(error => {

@@ -1,4 +1,4 @@
-import { AmazonAdsSDK } from '../../index';
+import { AmazonAdsSDK } from '../../../index';
 import dotenv from 'dotenv';
 
 // Test environment'ı yükle
