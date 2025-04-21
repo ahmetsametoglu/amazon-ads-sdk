@@ -16,6 +16,25 @@ TypeScript/JavaScript SDK for Amazon Advertising API.
 > 
 > This approach will give you full control over the SDK's development and protect you from unexpected breaking changes.
 
+## Features
+
+- TypeScript support
+- Environment variables configuration
+- Sandbox mode
+- Sponsored Products API support
+  - Campaign management
+  - Targeting
+  - Keywords
+  - Budget rules
+
+## Prerequisites
+
+Before using this SDK, you need to:
+1. Set up Amazon Advertising API access - [Apply for API Access](https://advertising.amazon.com/API/docs/en-us/guides/onboarding/apply-for-access)
+2. Create an LWA application - [Create LWA App Guide](https://advertising.amazon.com/API/docs/en-us/guides/onboarding/create-lwa-app)
+3. Assign API access to users - [Assign API Access](https://advertising.amazon.com/API/docs/en-us/guides/onboarding/assign-api-access)
+4. Generate authorization credentials - [Create Authorization Grant](https://advertising.amazon.com/API/docs/en-us/guides/get-started/create-authorization-grant)
+
 ## Installation
 
 ```bash
@@ -28,31 +47,11 @@ or
 yarn add @ayasdev/amazon-ads-sdk
 ```
 
-## Usage
+## Configuration
 
-```typescript
-import { AmazonAdsSDK } from 'amazon-ads-sdk-ayas';
+### Environment Variables
 
-const sdk = new AmazonAdsSDK({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret',
-  refreshToken: 'your-refresh-token',
-  region: 'EU',
-  sandbox: false,
-});
-
-// Sponsored Products API
-const campaigns = await sdk.sponsoredProducts.campaigns.list();
-const adGroups = await sdk.sponsoredProducts.adGroups.list();
-
-// Targeting API
-const targeting = await sdk.targeting.targeting.list();
-const negativeTargeting = await sdk.targeting.negativeTargeting.list();
-```
-
-## Environment Variables
-
-You can define the following variables in your `.env` file:
+Store your credentials securely in a `.env` file:
 
 ```env
 AMAZON_CLIENT_ID=your-client-id
@@ -62,59 +61,86 @@ AMAZON_REGION=EU
 SANDBOX_MODE=false
 ```
 
-## Development
+### SDK Initialization
 
-```bash
-# Install dependencies
-npm install
+```typescript
+import { AmazonAdsSDK } from '@ayasdev/amazon-ads-sdk';
 
-# Build for development
-npm run build
-
-# Run tests
-npm test
-
-# Run linting
-npm run lint
+const sdk = new AmazonAdsSDK({
+  clientId: 'your-client-id',
+  clientSecret: 'your-client-secret',
+  refreshToken: 'your-refresh-token',
+  region: 'EU', // Supported regions: NA (North America), EU (Europe), FE (Far East)
+  sandbox: false // Set to true for sandbox mode
+});
 ```
-
-## Features
-
-- Full TypeScript support
-- Modular architecture with namespaces
-- Complete Sponsored Products API coverage
-- Comprehensive targeting options
-- Environment variables support
-- Built-in sandbox mode
 
 ## API Structure
 
-### Sponsored Products
+### Sponsored Products (SP) Namespace
 
-- Campaigns
-- Ad Groups
-- Product Ads
-- Keywords
-- Negative Keywords
-- Campaign Negative Keywords
-- Keyword Recommendations
-- Campaign Optimization Rules
+SDK structure for the Sponsored Products section of Amazon Advertising API:
 
-### Targeting
+```typescript
+sdk.sp
+  ├── campaigns
+  │   ├── optimization
+  │   └── budget
+  ├── adGroups
+  ├── productAds
+  ├── keywords
+  │   ├── recommendations
+  │   └── negative
+  └── targeting
+      ├── product
+      │   └── promotions
+      └── negative
+          ├── campaign
+          └── api
+```
 
-- Targeting
-- Negative Targeting
-- Campaign Negative Targeting
-- Product Targeting
-- Target Promotion Groups
+#### Campaigns
+- `sdk.sp.campaigns`: Campaign management (CRUD operations)
+- `sdk.sp.campaigns.optimization`: Campaign optimization rules
+- `sdk.sp.campaigns.budget`: Budget management operations
+
+#### Keywords
+- `sdk.sp.keywords`: Keyword management
+- `sdk.sp.keywords.recommendations`: Keyword recommendations
+- `sdk.sp.keywords.negative`: Negative keyword operations
+
+#### Targeting
+- `sdk.sp.targeting`: Targeting operations
+- `sdk.sp.targeting.negative.campaign`: Campaign-level negative targeting
+- `sdk.sp.targeting.negative`: Ad group-level negative targeting
+- `sdk.sp.targeting.product.promotions`: Product promotion targeting
+
+#### Other Operations
+- `sdk.sp.adGroups`: Ad group management
+- `sdk.sp.productAds`: Product ad operations
+- `sdk.sp.productRecommendations`: Product recommendations
+
+## Usage Examples
+
+```typescript
+// Get campaigns
+const campaigns = await sdk.sp.campaigns.list(profileId);
+
+// Get ad groups
+const adGroups = await sdk.sp.adGroups.list(profileId);
+
+// Get targeting
+const targeting = await sdk.sp.targeting.list(profileId);
+
+// Get negative targeting
+const negativeTargeting = await sdk.sp.targeting.negative.list(profileId);
+```
 
 ## Error Handling
 
-The SDK uses a consistent error handling approach:
-
 ```typescript
 try {
-  const campaigns = await sdk.sponsoredProducts.campaigns.list();
+  const campaigns = await sdk.sp.campaigns.list(profileId);
 } catch (error) {
   if (error.response) {
     // Amazon API error
@@ -124,24 +150,6 @@ try {
     console.error('Error:', error.message);
   }
 }
-```
-
-## Authentication
-
-The SDK supports authentication through environment variables or direct configuration:
-
-```typescript
-// Using environment variables
-const sdk = new AmazonAdsSDK();
-
-// Direct configuration
-const sdk = new AmazonAdsSDK({
-  clientId: 'your-client-id',
-  clientSecret: 'your-client-secret',
-  refreshToken: 'your-refresh-token',
-  region: 'EU',
-  sandbox: false,
-});
 ```
 
 ## Contributing
