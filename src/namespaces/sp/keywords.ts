@@ -188,7 +188,7 @@ export namespace Keywords {
      *
      * @requires permission: advertiser_campaign_edit, advertiser_campaign_view
      */
-    async getGlobalRecommendations(
+    async getGlobal(
       profileId: string,
       accountId: string,
       request: GetGlobalRankedKeywordRecommendationRequest,
@@ -211,7 +211,7 @@ export namespace Keywords {
      *
      * @requires permission: advertiser_campaign_edit, advertiser_campaign_view
      */
-    async getRecommendations(
+    async get(
       profileId: string,
       request: GetRankedKeywordRecommendationRequest,
       marketplaceId?: string,
