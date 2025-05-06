@@ -5,7 +5,7 @@ export class AuthModule extends BaseApi {
     super({ ...config, refreshToken: '' });
   }
 
-  public getAuthorizationUrl(state: string = ''): string {
+  public getAuthorizationUrl(redirectUri: string, state: string = ''): string {
     const baseUrls = {
       NA: 'https://sellercentral.amazon.com',
       EU: 'https://sellercentral-europe.amazon.com',
@@ -16,7 +16,7 @@ export class AuthModule extends BaseApi {
       client_id: this.config.clientId,
       scope: 'advertising::campaign_management',
       response_type: 'code',
-      redirect_uri: this.config.redirectUri || '',
+      redirect_uri: redirectUri,
     };
 
     if (state) {
@@ -28,7 +28,7 @@ export class AuthModule extends BaseApi {
     return `${baseUrls[this.config.region]}/apps/authorize?${queryParams.toString()}`;
   }
 
-  public async getRefreshToken(authorizationCode: string): Promise<{ refreshToken: string }> {
+  public async getRefreshToken(authorizationCode: string, redirectUri: string): Promise<{ refreshToken: string }> {
     const tokenEndpoint = this.getTokenEndpoint();
 
     const response = await this.axiosInstance.post(
@@ -36,7 +36,7 @@ export class AuthModule extends BaseApi {
       {
         grant_type: 'authorization_code',
         code: authorizationCode,
-        redirect_uri: this.config.redirectUri,
+        redirect_uri: redirectUri,
         client_id: this.config.clientId,
         client_secret: this.config.clientSecret,
       },

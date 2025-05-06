@@ -7,14 +7,12 @@ export interface BaseConfig {
   region: 'NA' | 'EU' | 'FE';
   sandbox?: boolean;
   refreshToken?: string;
-  redirectUri?: string;
 }
 
 export interface AuthConfig {
   clientId: string;
   clientSecret: string;
   region: 'NA' | 'EU' | 'FE';
-  redirectUri: string;
 }
 
 interface TokenInfo {
