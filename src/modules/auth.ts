@@ -7,9 +7,9 @@ export class AuthModule extends BaseApi {
 
   public getAuthorizationUrl(redirectUri: string, state: string = ''): string {
     const baseUrls = {
-      NA: 'https://sellercentral.amazon.com',
-      EU: 'https://sellercentral-europe.amazon.com',
-      FE: 'https://sellercentral-japan.amazon.com',
+      NA: 'https://www.amazon.com/ap/oa',
+      EU: 'https://eu.account.amazon.com/ap/oa',
+      FE: 'https://apac.account.amazon.com/ap/oa',
     };
 
     const params: Record<string, string> = {
@@ -25,7 +25,7 @@ export class AuthModule extends BaseApi {
 
     const queryParams = new URLSearchParams(params);
 
-    return `${baseUrls[this.config.region]}/apps/authorize?${queryParams.toString()}`;
+    return `${baseUrls[this.config.region]}?${queryParams.toString()}`;
   }
 
   public async getRefreshToken(authorizationCode: string, redirectUri: string): Promise<{ refreshToken: string }> {
