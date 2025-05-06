@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { BaseApi, AuthConfig } from './base';
 
 export class AuthModule extends BaseApi {
@@ -31,21 +32,26 @@ export class AuthModule extends BaseApi {
   public async getRefreshToken(authorizationCode: string, redirectUri: string): Promise<{ refreshToken: string }> {
     const tokenEndpoint = this.getTokenEndpoint();
 
-    const response = await this.axiosInstance.post(
-      tokenEndpoint,
-      {
-        grant_type: 'authorization_code',
-        code: authorizationCode,
-        redirect_uri: redirectUri,
-        client_id: this.config.clientId,
-        client_secret: this.config.clientSecret,
-      },
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+    const response = await axios
+      .post(
+        tokenEndpoint,
+        {
+          grant_type: 'authorization_code',
+          code: authorizationCode,
+          redirect_uri: redirectUri,
+          client_id: this.config.clientId,
+          client_secret: this.config.clientSecret,
         },
-      }
-    );
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      )
+      .catch(err => {
+        debugger;
+        throw err;
+      });
 
     if (!response.data.refresh_token) {
       throw new Error('Refresh token not received');

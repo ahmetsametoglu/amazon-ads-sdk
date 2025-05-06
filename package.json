@@ -1,7 +1,7 @@
 {
   "name": "@ayasdev/amazon-ads-sdk",
   "homepage": "https://github.com/ahmetsametoglu/amazon-ads-sdk",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A comprehensive TypeScript/JavaScript SDK for Amazon Advertising API with full type support",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
