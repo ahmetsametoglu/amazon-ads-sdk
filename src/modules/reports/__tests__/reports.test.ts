@@ -66,7 +66,6 @@ describe('ReportsModule Integration Tests', () => {
   it('should create a report', async () => {
     const result = await sdk.reports
       .createReport(
-        clientId,
         {
           startDate: '2025-04-01',
           endDate: '2025-05-01',
@@ -80,8 +79,7 @@ describe('ReportsModule Integration Tests', () => {
           },
           name: 'TestReport',
         },
-        profileId,
-        clientId
+        profileId
       )
       .catch(err => {
         debugger;

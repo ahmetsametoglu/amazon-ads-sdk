@@ -20,8 +20,8 @@ export class ReportsModule extends BaseApi {
   /**
    * Creates a report
    */
-  async createReport(clientId: string, body: CreateReportBody, scope?: string, accountId?: string) {
-    const response = await this.api.createAsyncReport(clientId, scope, accountId, body);
+  async createReport(body: CreateReportBody, scope?: string, accountId?: string) {
+    const response = await this.api.createAsyncReport(this.clientId, scope, accountId, body);
     return response.data;
   }
 
