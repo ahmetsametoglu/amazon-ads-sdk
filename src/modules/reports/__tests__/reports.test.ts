@@ -91,7 +91,7 @@ describe('ReportsModule Integration Tests', () => {
 
   it('should get the status of the created report', async () => {
     if (!createdReportId) return;
-    const status = await sdk.reports.getReportStatus(createdReportId, clientId, { scope: profileId, getDataIfCompleted: true }).catch(err => {
+    const status = await sdk.reports.getReportStatus(createdReportId, { scope: profileId, getDataIfCompleted: true }).catch(err => {
       debugger;
       throw err;
     });
@@ -102,7 +102,7 @@ describe('ReportsModule Integration Tests', () => {
 
   it('should delete the report', async () => {
     if (!createdReportId) return;
-    const result = await sdk.reports.deleteReport(createdReportId, clientId);
+    const result = await sdk.reports.deleteReport(createdReportId);
     expect(result).toHaveProperty('reportId', createdReportId);
   }, 10000);
 });

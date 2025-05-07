@@ -28,8 +28,8 @@ export class ReportsModule extends BaseApi {
   /**
    * Gets the status of a report
    */
-  async getReportStatus(reportId: string, clientId: string, params: { scope?: string; accountId?: string; getDataIfCompleted?: boolean }) {
-    const response = await this.api.getAsyncReport(reportId, clientId, params.scope, params.accountId);
+  async getReportStatus(reportId: string, params: { scope?: string; accountId?: string; getDataIfCompleted?: boolean }) {
+    const response = await this.api.getAsyncReport(reportId, this.clientId, params.scope, params.accountId);
     let data = null;
     if (params.getDataIfCompleted && response.data.status === 'COMPLETED') {
       const downloadUrl = response.data.url;
@@ -54,8 +54,8 @@ export class ReportsModule extends BaseApi {
   /**
    * Deletes a report
    */
-  async deleteReport(reportId: string, clientId: string, scope?: string, accountId?: string) {
-    const response = await this.api.deleteAsyncReport(reportId, clientId, scope, accountId);
+  async deleteReport(reportId: string, scope?: string, accountId?: string) {
+    const response = await this.api.deleteAsyncReport(reportId, this.clientId, scope, accountId);
     return response.data;
   }
 }
